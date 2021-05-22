@@ -7,46 +7,45 @@
     "jupyterlab",
     "jupyterlab-extension"
   ],
-  "homepage": "https://github.com/lihebi/jupyterlab-racket",
+  "homepage": "https://github.com/lihebi/jupyterlab-racket.git",
   "bugs": {
-    "url": "https://github.com/lihebi/jupyterlab-racket/issues"
+    "url": "https://github.com/lihebi/jupyterlab-racket.git/issues"
   },
   "license": "BSD-3-Clause",
-  "author": "Hebi Li",
+  "author": {
+    "name": "Hebi Li",
+    "email": "lihebi.com@gmail.com"
+  },
   "files": [
     "lib/**/*.{d.ts,eot,gif,html,jpg,js,js.map,json,png,svg,woff2,ttf}",
-    "style/**/*.{css,eot,gif,html,jpg,json,png,svg,woff2,ttf}",
-    "style/index.js"
+    "style/**/*.{css,.js,eot,gif,html,jpg,json,png,svg,woff2,ttf}"
   ],
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "style": "style/index.css",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lihebi/jupyterlab-racket.git"
+    "url": "https://github.com/lihebi/jupyterlab-racket.git.git"
   },
   "scripts": {
     "build": "jlpm run build:lib && jlpm run build:labextension:dev",
+    "build:prod": "jlpm run clean && jlpm run build:lib && jlpm run build:labextension",
     "build:labextension": "jupyter labextension build .",
     "build:labextension:dev": "jupyter labextension build --development True .",
     "build:lib": "tsc",
-    "build:prod": "jlpm run clean && jlpm run build:lib && jlpm run build:labextension",
     "clean": "jlpm run clean:lib",
-    "clean:all": "jlpm run clean:lib && jlpm run clean:labextension",
-    "clean:labextension": "rimraf jupyterlab-racket/labextension",
     "clean:lib": "rimraf lib tsconfig.tsbuildinfo",
+    "clean:labextension": "rimraf jupyterlab-racket/labextension",
+    "clean:all": "jlpm run clean:lib && jlpm run clean:labextension",
     "eslint": "eslint . --ext .ts,.tsx --fix",
     "eslint:check": "eslint . --ext .ts,.tsx",
     "install:extension": "jlpm run build",
-    "prepare": "jlpm run clean && jlpm run build",
     "watch": "run-p watch:src watch:labextension",
-    "watch:labextension": "jupyter labextension watch .",
-    "watch:src": "tsc -w"
+    "watch:src": "tsc -w",
+    "watch:labextension": "jupyter labextension watch ."
   },
   "dependencies": {
-    "@jupyterlab/application": "^3.0.11",
-    "@jupyterlab/codemirror": "^3.0.9",
-    "@types/codemirror": "0.0.76"
+    "@jupyterlab/application": "^3.0.0"
   },
   "devDependencies": {
     "@jupyterlab/builder": "^3.0.0",
@@ -54,7 +53,7 @@
     "@typescript-eslint/parser": "^4.8.1",
     "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-prettier": "^3.1.4", 
     "npm-run-all": "^4.1.5",
     "prettier": "^2.1.1",
     "rimraf": "^3.0.2",
@@ -64,9 +63,9 @@
     "style/*.css",
     "style/index.js"
   ],
-  "jupyterlab": {
+  "styleModule": "style/index.js",
+  "jupyterlab": { 
     "extension": true,
     "outputDir": "jupyterlab-racket/labextension"
-  },
-  "styleModule": "style/index.js"
+  }
 }
